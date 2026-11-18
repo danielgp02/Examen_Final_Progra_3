@@ -8,8 +8,9 @@ import javax.swing.SwingUtilities;
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            RepositorioCliente clientes = new RepositorioClienteTxt("datos/clientes.txt");
-            RepositorioMascota mascotas = new RepositorioMascotaTxt("datos/mascotas.txt", clientes);
+            // Usar repositorios MySQL en lugar de TXT
+            RepositorioCliente clientes = new RepositorioClienteMySQL();
+            RepositorioMascota mascotas = new RepositorioMascotasMySQL();
             VeterinariaService service = new VeterinariaService(clientes,mascotas);
             new VentanaVeterinaria(new VeterinariaController(service)).setVisible(true);
         });
